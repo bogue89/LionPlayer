@@ -1,0 +1,124 @@
+.lionplayer{
+	margin: 0px auto;
+	background: black;
+	min-width: 100px;
+	min-height: 300px;
+	max-width: 100%;
+	overflow: hidden;
+}
+.lionplayer video{
+	image-fit: contain;
+	image-fit: fill;
+	image-fit: cover;
+	object-fit: contain;
+	object-fit: fill;
+	object-fit: cover;
+}
+.lionplayer .poster{
+	display: none;
+	position: absolute;
+	top:0;left:0;
+	width:100%;
+	height:100%;
+	background: #000 center center no-repeat; 
+	background-size: none;
+	background-size: cover;
+	background-size: contain;
+}
+.lionplayer[status="stop"] .poster{
+	display: inherit;	
+}
+.lionplayer .videoOverlay{
+	position: absolute;
+	top:0;left:0;
+	width:100%;
+	height:100%;
+	background: black;
+	opacity: .03;
+}
+.lionplayer .controls{
+	position: absolute;
+	bottom:0;left:0;
+	width: 100%;
+	height: 15px;
+	background: transparent;
+}
+.lionplayer .playBtnCenter{
+	width:1px;
+	height:1px;
+	position:absolute;
+	top:50%;
+	left:50%;
+}
+.lionplayer .playBtn{
+	cursor:pointer;
+	position:absolute;
+	width:0;
+	height:0;
+	border-top-color: transparent;
+	border-top-style: solid;
+	border-top-width: 20px;
+	border-bottom-color: transparent;
+	border-bottom-style: solid;
+	border-bottom-width: 20px;
+	border-left-color: white;
+	border-left-style: solid;
+	border-left-width: 20px;
+}
+.lionplayer .timeBar{
+	cursor:pointer;
+	position:absolute;
+	bottom:2px;
+	left:50px;
+	right:100px;
+	width:auto;
+	height:9px;
+	background:#eee;
+}
+.lionplayer .progressBar{
+	position: absolute;
+	top:0;
+	left:0;
+	width: 0%;
+	height: 100%;
+	background: white;
+}
+.lionplayer .durationLabel{
+	position:absolute;	
+	bottom:1px;
+	right:50px;
+	width:45px;
+	height:12px;
+	background:transparent;
+	color:white;
+	font-family:'Helvetica Nueue',Helvetica,Arial;
+	font-size:10px;
+	text-align:center;
+}
+.lionplayer .progressLabel{
+	position:absolute;
+	bottom:1px;
+	left:0px;
+	width:50px;
+	height:12px;
+	background:transparent;
+	color:white;
+	font-family:'Helvetica Nueue',Helvetica,Arial;
+	font-size:10px;
+	text-align:center;
+}
+
+.lionplayer .fullscreenBtn{
+	cursor:pointer;
+	position:absolute;
+	background: #fff;
+	width:12px;
+	height:12px;
+	right:5px;
+	bottom: 2px;
+	border-top-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.lionplayer .hidden{
+	display:none;
+}

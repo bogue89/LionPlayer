@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" charset="UTF-8" />
+	<meta name="viewport" content="width=device-width"/>
+	<meta name="description" content="<?php echo $website_description ?>"/>
+	<meta name="keywords" content="<?php echo $website_keywords ?>"/>
+	<meta name="author" content="<?php echo $company_name ?>"/>
+	<title>LionPlayer</title>
+	
+	<link rel="stylesheet" type="text/css" href="lionplayer.css" media="screen" />
+	<style type="text/css">
+		.lionplayer{
+			width:220px;
+			height: 480px;
+		}
+	</style>
+	<script type="text/javascript" src="lionplayer.js"></script>
+</head>
+<body>
+	<h1>Demo</h1>
+	
+	<div class="lionplayer">
+		<video controls poster="http://buskeeper.com/img/iphone-5-screen-1.png">
+			<source src="http://buskeeper.com/video/bus-experience-1.mp4" type="video/mp4"/>
+			<source src="http://buskeeper.com/video/bus-experience-1.webm" type="video/webm"/>
+			Your browser do not support HTML5 video.
+		</video>
+	</div>
+	<hr>
+	<a href="#" id="Play">Play</a>
+	<a href="#" id="PlayPause">PlayPause</a>
+	<a href="#" id="Stop">Stop</a>
+	<a href="#" id="Fullscreen">Fullscreen</a>
+	
+	<script>
+		var lionplayer = document.getElementsByClassName("lionplayer")[0];
+		var player = new LionPlayer(lionplayer);
+
+		document.getElementById("Play").addEventListener('click',function(){
+			player.play();
+		});
+		document.getElementById("PlayPause").addEventListener('click',function(){
+			player.playPause();
+		});
+		document.getElementById("Stop").addEventListener('click',function(){
+			player.stop();
+		});
+		document.getElementById("Fullscreen").addEventListener('click',function(){
+			player.fullscreen();
+		});
+		
+		player.addEventListener('play',function(){
+			console.log('video PLAY!');
+		},this);
+		player.addEventListener('pause',function(){
+			console.log('video PAUSE!');
+		},this);
+		
+		player.addEvents({
+			'play':function(){
+				console.log('video PLAY! 2');
+			},
+			'pause':function(){
+				console.log('video PAUSE! 2');
+			}
+		});
+	</script>
+</body>
+</html>
