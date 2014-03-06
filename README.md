@@ -20,7 +20,9 @@ Aplication
 ----------
 
 Import the lionplayer.js
+
 Import the lionplayer.css
+
 Initialize you object sending the DOMElement with the "lionplayer" class.
 
 ###Demo:
