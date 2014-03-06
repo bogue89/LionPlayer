@@ -23,8 +23,7 @@ Import the lionplayer.js
 Import the lionplayer.css
 Initialize you object sending the DOMElement with the "lionplayer" class.
 
-Demo:
-<pre><code>
+###Demo:
 	<div class="lionplayer">
 		<video controls="true" poster="cover.png">
 			<source type="video/mp4" src="video.mp4" />
@@ -37,7 +36,6 @@ Demo:
 		lionplayer.addEvent('play');
 		lionplayer.play();
 	</script>
-</code></pre>
 That will get you running. The minimalist style of the player make easy to adapt to you personal design, just make you own .css and add what ever you want under the class .lionplayer for any object in it, including the states *(showing or hidden)*.
 <pre><code>
 .lionplayer .*element* .*state*{
