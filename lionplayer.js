@@ -198,6 +198,15 @@ LionPlayer.prototype.stop = function() {
 LionPlayer.prototype.isPause = function() {
     return this.htmlPlayer.paused;
 };
+LionPlayer.prototype.load = function() {
+    return this.htmlPlayer.load();
+};
+LionPlayer.prototype.canPlayType = function() {
+    return this.htmlPlayer.canPlayType();
+};
+LionPlayer.prototype.addTextTrack = function() {
+    return this.htmlPlayer.addTextTrack();
+};
 LionPlayer.prototype.hidePlayBtn = function() {
     this.playBtn.className = this.playBtn.className.replace('showing','hidden');    
 };
