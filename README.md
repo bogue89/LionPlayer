@@ -3,7 +3,7 @@
 Description
 -----------
 
-HTML5 Videoplayer easy to manipulate and mobile compatible.
+HTML5 Videoplayer encapsulated, easy to manipulate and mobile compatible.
 
 The javascript is simple but strong, allows you to add an object the way you'll do it in HTML5 with controls, poster and sources elements for video, LionPlayer will arrange the events for rapid reproduction and functions like:
 
@@ -13,15 +13,13 @@ The javascript is simple but strong, allows you to add an object the way you'll 
 * playpause - will play if paused, or pause if playing
 * fullscreen - when fired with user interaction goes fullscreen on webkit, moz, opera and ms.
 
-The LionPlayer object is compatible with mootools or jquery and pretty much every web browser. In adition with the functions you cand easily add events with *LionPlayer.addEventListener('event')* or *LionPlayer.addevent('event)* like in mootools.
+The LionPlayer object is pure javascript and is compatible with compatible with mootools or jquery and pretty much every web browser. In adition with the functions you cand easily add events with *LionPlayer.addEventListener('event', function)* or *LionPlayer.addevent('event', function)* if you are smart enough to use mootools.
 
 
 Aplication
 ----------
 
-Import the lionplayer.js
-
-Import the lionplayer.css
+Import the lionplayer.js and lionplayer.css
 
 Initialize you object sending the DOMElement with the "lionplayer" class.
 
@@ -33,14 +31,17 @@ Initialize you object sending the DOMElement with the "lionplayer" class.
 	</div>
 	<script>
 		var element = domelement.getElementsByClassName("lionplayer")[0];
-		var lionplayer = new LionPlayer(element);
-	
-		lionplayer.addEvent('play');
-		lionplayer.play();
+		var player = new LionPlayer(element);
+		
+		player.addEvent('play', function(){
+			// do something
+		});
+		
+		player.play();
 	</script>
 That will get you running. The minimalist style of the player make easy to adapt to you personal design, just make you own .css and add what ever you want under the class .lionplayer for any object in it, including the states *(showing or hidden)*.
 <pre><code>
-.lionplayer .*element* .*state*{
+.lionplayer .{element} .{state}{
 }
 </code></pre>
 Example:
@@ -78,3 +79,8 @@ Example:
 	/*Set the label for video duration red*/
 }
 </code></pre>
+
+Things to do
+------------
+
++ Encapsulate global functions in LionPlayer prototype.
