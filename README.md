@@ -13,7 +13,7 @@ The javascript is simple but strong, allows you to add an object the way you'll 
 * playpause - will play if paused, or pause if playing
 * fullscreen - when fired with user interaction goes fullscreen on webkit, moz, opera and ms.
 
-The LionPlayer object is compatible with mootools or jquery and pretty much every web browser. In adition with the functions you cand easily add events with *LionPlayer.addEventListener('event')* or *LionPlayer.addevent('event)* like in mootools.
+The LionPlayer object is compatible with mootools or jquery and pretty much every web browser. In addition with the functions you cand easily add events with *LionPlayer.addEventListener('event')* or *LionPlayer.addevent('event)* like in mootools.
 
 
 Aplication
