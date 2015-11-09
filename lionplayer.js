@@ -41,13 +41,17 @@ function LionPlayer(domelement) {
 		this.poster = poster(this.htmlPlayer.getAttribute("poster"));
 		this.domelement.appendChild(this.poster);
 	}
+	
+	this.videoOverlay = videoOverlay();
+	this.domelement.appendChild(this.videoOverlay);
+	this.controlsOverlay = controlsOverlay();
+	this.domelement.appendChild(this.controlsOverlay);
+	
 	this.playBtn = playBtn(size);
 	var playCenter = playBtnCenter();
 	playCenter.appendChild(this.playBtn);
 	this.domelement.appendChild(playCenter);
 	
-	this.videoOverlay = videoOverlay();
-	this.domelement.appendChild(this.videoOverlay);
 	this.controls = controls();
 	this.timeBar = timeBar();
 	this.controls.appendChild(this.timeBar);
@@ -104,6 +108,32 @@ function LionPlayer(domelement) {
 			}	
 		}
 	}, false);
+	this.controlsOverlay.addEventListener("click", function(e){
+		e.preventDefault(); e.stopPropagation();
+		if(LionPlayer.playOnClick){
+			if(LionPlayer.isPause()){
+				LionPlayer.play();	
+			} else {
+				LionPlayer.pause();
+				if(mobile){
+					LionPlayer.showControls();
+				}
+			}	
+		}
+	}, false);
+	this.playBtn.addEventListener("click", function(e){
+		e.preventDefault(); e.stopPropagation();
+		if(LionPlayer.playOnClick){
+			if(LionPlayer.isPause()){
+				LionPlayer.play();	
+			} else {
+				LionPlayer.pause();
+				if(mobile){
+					LionPlayer.showControls();
+				}
+			}	
+		}
+	}, false);
 	domelement.addEventListener("dblclick", function(e){
 		e.preventDefault(); e.stopPropagation(); 
 	}, false);
@@ -141,7 +171,7 @@ function LionPlayer(domelement) {
 		LionPlayer.progressLabel.innerHTML = hrs > 0 ? hrs+":"+min+":"+seg : (min<10 ? "0"+min:min)+":"+(seg<10 ? "0"+seg:seg);
 		LionPlayer.progressBar.style.width = (LionPlayer.htmlPlayer.currentTime/LionPlayer.htmlPlayer.duration *100)+"%";
 	});
-	document.addEventListener("contextmenu", stopPropagation, false);
+	//document.addEventListener("contextmenu", stopPropagation, false);
 	
 	document.addEventListener("fullscreenchange", function () {
 	    LionPlayer.exitFullscreen()
@@ -161,7 +191,7 @@ function LionPlayer(domelement) {
 	// Remove the HTML5 poster
 	this.htmlPlayer.removeAttribute("poster");
 	
-	console.log("new: "+this.type);
+//	console.log("new: "+this.type);
 	
 	return this;
 }
@@ -173,20 +203,24 @@ function LionPlayer(domelement) {
 */
 LionPlayer.prototype.play = function() {
 	this.hidePlayBtn();
+	this.hideControlsOverlay();
     this.htmlPlayer.play();
     this.domelement.setAttribute("status", "playing");
 };
 LionPlayer.prototype.pause = function() {
 	this.showPlayBtn();
+	this.showControlsOverlay();
     this.htmlPlayer.pause();
     this.domelement.setAttribute("status", "paused");
 };
 LionPlayer.prototype.playPause = function() {
 	if(this.isPause()){
 		this.hidePlayBtn();
+		this.hideControlsOverlay();
 		this.htmlPlayer.play();
 	} else {
 		this.showPlayBtn();
+		this.showControlsOverlay();
 		this.htmlPlayer.pause();
 	}
 };
@@ -212,6 +246,12 @@ LionPlayer.prototype.hidePlayBtn = function() {
 };
 LionPlayer.prototype.showPlayBtn = function() {
     this.playBtn.className = this.playBtn.className.replace('hidden','showing');
+};
+LionPlayer.prototype.hideControlsOverlay = function() {
+    this.controlsOverlay.className = this.controlsOverlay.className.replace('showing','hidden');    
+};
+LionPlayer.prototype.showControlsOverlay = function() {
+    this.controlsOverlay.className = this.controlsOverlay.className.replace('hidden','showing');
 };
 LionPlayer.prototype.hideTimeBar = function() {
     this.timeBar.className = this.timeBar.className.replace('showing','hidden');    
@@ -310,6 +350,11 @@ var videoOverlay = function(){
 	overlay.setAttribute('class', "videoOverlay showing");
 	return overlay;
 }
+var controlsOverlay = function(){
+	var overlay = document.createElement("div");
+	overlay.setAttribute('class', "controlsOverlay showing");
+	return overlay;
+}
 var controls = function(){
 	var div = document.createElement("div");
 	div.setAttribute('class', "controls");
@@ -331,7 +376,7 @@ var playBtnCenter = function(){
 }
 var playBtn = function(size){
 	var btn = document.createElement("div");
-	btn.setAttribute('style', "top:-"+size+"px;left:-"+size/2+"px;border-top-width: "+size+"px;border-bottom-width: "+size+"px; border-left-width: "+size*1.5+"px;");
+//	btn.setAttribute('style', "top:-"+size+"px;left:-"+size/2+"px;border-top-width: "+size+"px;border-bottom-width: "+size+"px; border-left-width: "+size*1.5+"px;");
 	btn.setAttribute('class', "playBtn showing");
 	return btn;
 }
