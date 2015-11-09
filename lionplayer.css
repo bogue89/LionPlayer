@@ -6,7 +6,8 @@
 	max-width: 100%;
 	overflow: hidden;
 }
-.lionplayer video{
+.lionplayer video {
+	max-width: 100%;
 	image-fit: contain;
 	image-fit: fill;
 	image-fit: cover;
@@ -28,13 +29,14 @@
 .lionplayer[status="stop"] .poster{
 	display: inherit;	
 }
-.lionplayer .videoOverlay{
+.lionplayer .videoOverlay,
+.lionplayer .controlsOverlay {
 	position: absolute;
 	top:0;left:0;
 	width:100%;
 	height:100%;
 	background: black;
-	opacity: .03;
+	opacity: .1;
 }
 .lionplayer .controls{
 	position: absolute;
